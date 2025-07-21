@@ -2,16 +2,16 @@ import { Colors } from "@/constants/colors";
 import { StyleSheet, Text, View } from "react-native";
 import Animated, { Easing, useSharedValue, withDelay, withTiming } from "react-native-reanimated";
 
-function randomBool(probability: number) {
-  return Math.random() < probability
+function quadraticInterpolation(a: number, b: number, l: number, x: number) {
+  return 4 / (l * l) * (b - a) * x * (x - l) + b
 }
 
 export default function Title({ text }: { text: string }) {
   return (
     <View style={styles.titleContainer}>
       {Array.from(Array.from(text).entries().map(([index, char]) => {
-        const delay = 500 * Math.random()
-        const y = useSharedValue(randomBool(0.5) ? 50 : -50);
+        const delay = quadraticInterpolation(0, 400, text.length - 1, index);
+        const y = useSharedValue(-30);
         y.value = withDelay(delay, withTiming(0, {
           duration: 1000,
           easing: Easing.out(Easing.cubic)
@@ -19,7 +19,7 @@ export default function Title({ text }: { text: string }) {
         const opacity = useSharedValue(0);
         opacity.value = withDelay(delay, withTiming(1, {
           duration: 1000,
-          easing: Easing.out(Easing.cubic)
+          easing: Easing.out(Easing.exp)
         }))
         return (
           <Animated.View style={{ top: y, opacity: opacity }}>
