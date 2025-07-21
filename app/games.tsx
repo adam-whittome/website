@@ -1,7 +1,7 @@
 import Background from "@/components/background";
 
-export default function Index() {
+export default function Games() {
   return (
     <Background />
-  );
+  )
 }
