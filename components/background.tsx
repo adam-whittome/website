@@ -132,7 +132,7 @@ async function onContextCreate(gl: ExpoWebGLRenderingContext) {
       return result;
     }
 
-    const vec3 color = vec3(0.05);
+    const vec3 color = vec3(0.03125);
     const float displacement = 1000.0;
 
     void main(void) {
