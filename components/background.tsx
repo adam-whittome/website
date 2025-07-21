@@ -1,3 +1,4 @@
+import { Colors } from '@/constants/colors';
 import { ExpoWebGLRenderingContext, GLView } from 'expo-gl';
 import { ReactNode } from 'react';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
@@ -204,7 +205,8 @@ async function onContextCreate(gl: ExpoWebGLRenderingContext) {
 
 const styles = StyleSheet.create({
   glView: {
+    flex: 1,
     zIndex: -1,
-    flex: 1
+    backgroundColor: Colors.backgroundDark
   }
 })

@@ -12,7 +12,14 @@
       "output": "static"
     },
     "plugins": [
-      "expo-asset"
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/FiraSans.ttf"
+          ]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
