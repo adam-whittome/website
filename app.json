@@ -24,7 +24,7 @@
     ],
     "experiments": {
       "typedRoutes": true,
-      "baseUrl": "/website"
+      "baseUrl": "/"
     }
   }
 }
