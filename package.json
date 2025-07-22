@@ -3,7 +3,7 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "deploy": "gh-pages --nojekyll -d dist",
+    "deploy": "gh-pages --nojekyll --cname adamwhitto.me -d dist",
     "predeploy": "expo export -p web",
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
