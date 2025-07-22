@@ -1,8 +1,8 @@
 import { Colors } from "@/constants/colors";
-import { FontAwesome } from "@expo/vector-icons";
+import { Image } from "expo-image";
 import { ReactNode } from "react";
-import { Pressable, StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
-import Animated from "react-native-reanimated";
+import { GestureResponderEvent, Pressable, StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
+import Animated, { SharedValue } from "react-native-reanimated";
 import Button from "./button";
 
 export enum LinkBoxArrangement {
@@ -13,9 +13,9 @@ export enum LinkBoxArrangement {
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
 export default function LinkBox(
-  { children, style, arrangement, title, description, buttonText }:
-  { children?: ReactNode, style?: StyleProp<ViewStyle>, arrangement: LinkBoxArrangement,
-    title?: string, description?: ReactNode, buttonText?: string }
+  { children, style, arrangement, title, description, buttonText, buttonIconSource, onPress }:
+  { children?: ReactNode, style?: StyleProp<ViewStyle>, arrangement: LinkBoxArrangement, title?: string, description?: ReactNode, buttonText?: string, buttonIconSource?: string
+    onPress?: ((event: GestureResponderEvent) => void) | SharedValue<((event: GestureResponderEvent) => void) | null | undefined> | null | undefined }
 ) {
   return (
     <View style={[style, styles.container]}>
@@ -31,12 +31,10 @@ export default function LinkBox(
         </View>
         <View style={styles.buttonContainer}>
           <Button style={styles.button} color={styles.button.backgroundColor} hoverColor={styles.buttonHover.backgroundColor}
-            onPress={() => {
-              
-            }}
+            onPress={onPress}
           >
             <Text style={[styles.text, styles.buttonText]}>{buttonText}</Text>
-            <FontAwesome name="gamepad" size={20}/>
+            { buttonIconSource ? <Image style={styles.icon} source={buttonIconSource}/> : null }
           </Button>
         </View>
       </View>
@@ -90,7 +88,11 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     color: Colors.backgroundLight,
-    fontWeight: "bold",
-    marginRight: 10
+    fontWeight: "bold"
+  },
+  icon: {
+    width: 30,
+    height: 20,
+    marginLeft: 10
   }
 })

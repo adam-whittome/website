@@ -13,8 +13,8 @@ export default function RootLayout() {
         headerShown: false
       }}
     >
-      <Stack.Screen name="index" />
-      <Stack.Screen name="shuffleScuffle" />
+      <Stack.Screen name="index" options={{ title: "adamwhitto.me" }} />
+      <Stack.Screen name="shufflescuffle" options={{ title: "Shuffle Scuffle" }} />
     </Stack>
   </ThemeProvider>
 }
