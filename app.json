@@ -19,7 +19,8 @@
             "./assets/fonts/FiraSans.ttf"
           ]
         }
-      ]
+      ],
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true

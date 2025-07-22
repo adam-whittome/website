@@ -22,8 +22,8 @@ export default function Title({ text }: { text: string }) {
           easing: Easing.out(Easing.exp)
         }))
         return (
-          <Animated.View style={{ top: y, opacity: opacity }}>
-            <Text key={index} style={styles.text}>{char}</Text>
+          <Animated.View key={index} style={{ top: y, opacity: opacity }}>
+            <Text style={styles.text}>{char}</Text>
           </Animated.View>
         )
       }))}

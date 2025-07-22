@@ -1,9 +1,14 @@
 import Background from "@/components/background";
+import LinkBox, { LinkBoxArrangement, styles as linkBoxStyles } from "@/components/linkBox";
 import Title from "@/components/title";
 import { Colors } from "@/constants/colors";
+import { useAssets } from "expo-asset";
+import { Image } from "expo-image";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
+
+  const [assets, error] = useAssets([require("../assets/images/shuffle_scuffle.png")])
   return (
     <Background style={styles.container}>
       <View style={styles.titleContainer}>
@@ -15,6 +20,24 @@ export default function Index() {
             Hello, I am Adam Whittome - welcome to the homepage of my website!
             Check out the links below.
           </Text>
+        </View>
+        <View style={styles.linksContainer}>
+          <LinkBox
+            style={styles.linkBox}
+            arrangement={LinkBoxArrangement.Right}
+            title="Shuffle Scuffle"
+            description='A puzzle game I made in 48 hours for the GMTK game jam with the theme "Joined Together".
+                         Made with PICO-8: a fantasy console with retro limitations for making and playing small games.'
+            buttonText="Play"
+          >
+            <Image
+              style={[styles.image, assets ? {
+                height: styles.linkBox.height - 2 * linkBoxStyles.container.padding,
+                width: assets[0].width! * (styles.linkBox.height - 2 * linkBoxStyles.container.padding) / assets[0].height!
+              } : {}]}
+              source={assets ? assets[0].uri : undefined}
+            />
+          </LinkBox>
         </View>
       </View>
     </Background>
@@ -38,12 +61,23 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30
   },
   descriptionContainer: {
-    width: "100%"
+    width: "100%",
+    marginBottom: 15
   },
   descriptionText: {
     color: Colors.foreground,
     fontFamily: "FiraSans",
-    fontSize: 25,
+    fontSize: 20,
     flexWrap: "wrap"
+  },
+  linksContainer: {
+
+  },
+  image: {
+    borderRadius: 15
+  },
+  linkBox: {
+    marginVertical: 10,
+    height: 250
   }
 })

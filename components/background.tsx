@@ -2,11 +2,12 @@ import { Colors } from '@/constants/colors';
 import { ExpoWebGLRenderingContext, GLView } from 'expo-gl';
 import { ReactNode } from 'react';
 import { StyleProp, StyleSheet, ViewStyle } from 'react-native';
+import ColorConverter from 'string-color-converter';
 
 export default function Background({ children, style }: { children?: ReactNode, style?: StyleProp<ViewStyle> }) {
   return (
     <GLView style={[styles.glView, style]} onContextCreate={onContextCreate}>
-      { children ? children : null }
+      {children}
     </GLView>
   );
 }
@@ -132,7 +133,11 @@ async function onContextCreate(gl: ExpoWebGLRenderingContext) {
       return result;
     }
 
-    const vec3 color = vec3(0.03125);
+    const vec3 color = vec3(
+      ${ColorConverter(Colors.backgroundLight).r / 256.0},
+      ${ColorConverter(Colors.backgroundLight).g / 256.0},
+      ${ColorConverter(Colors.backgroundLight).b / 256.0}
+    );
     const float displacement = 1000.0;
 
     void main(void) {

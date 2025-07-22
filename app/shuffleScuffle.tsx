@@ -1,6 +1,6 @@
 import Background from "@/components/background";
 
-export default function Games() {
+export default function ShuffleScuffle() {
   return (
     <Background />
   )

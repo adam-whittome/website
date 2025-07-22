@@ -1,6 +1,6 @@
 export const Colors = {
   backgroundDark: "#000000",
-  backgroundLight: "#080808",
+  backgroundLight: "#0a0a0a",
 
   foreground: "#ffffff",
 
