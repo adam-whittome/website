@@ -2,6 +2,7 @@
   "name": "website",
   "main": "expo-router/entry",
   "version": "1.0.0",
+  "homepage": "adamwhitto.me",
   "scripts": {
     "deploy": "gh-pages --nojekyll --cname adamwhitto.me -d dist",
     "predeploy": "expo export -p web",
