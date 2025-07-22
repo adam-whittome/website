@@ -14,7 +14,6 @@ export default function RootLayout() {
       }}
     >
       <Stack.Screen name="index" options={{ title: "adamwhitto.me" }} />
-      <Stack.Screen name="shufflescuffle" options={{ title: "Shuffle Scuffle" }} />
     </Stack>
   </ThemeProvider>
 }

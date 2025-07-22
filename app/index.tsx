@@ -5,10 +5,12 @@ import { Colors } from "@/constants/colors";
 import { useAssets } from "expo-asset";
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { Linking, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
-  const [assets, error] = useAssets([require("../assets/icons/controller.svg"), require("../assets/images/shuffle_scuffle.png")])
+  const [assets, error] = useAssets([
+    require("../assets/icons/controller.svg"), require("../assets/images/shuffle_scuffle.png"),
+  ])
   const router = useRouter();
   return (
     <Background style={styles.container}>
@@ -30,7 +32,7 @@ export default function Index() {
             description='A puzzle game I made in 48 hours for the GMTK game jam with the theme "Joined Together".
                          Made with PICO-8: a fantasy console with retro limitations for making and playing small games.'
             buttonText="Play"
-            onPress={() => { router.navigate("/shufflescuffle") }}
+            onPress={() => { Linking.openURL("https://www.lexaloffle.com/bbs/?tid=43326") }}
             buttonIconSource={assets ? assets[0].uri! : ""}
           >
             <Image
