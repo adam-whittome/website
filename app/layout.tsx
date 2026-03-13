@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Merriweather } from "next/font/google";
 
 export const metadata: Metadata = {
-  title: "Adam Whittome",
+  title: "Adam Whittome - Software Developer",
   description: "Personal website by Adam Whittome",
 };
+
+const merriweather = Merriweather({
+  subsets: ["latin"],
+  variable: "--merriweather",
+});
 
 export default function RootLayout({
   children,
@@ -13,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
+      <body className={merriweather.variable}>{children}</body>
     </html>
   );
 }
